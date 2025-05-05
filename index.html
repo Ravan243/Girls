@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>Ən Şirin Qız</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      border-radius: 10px;
+      color: white;
+      transition: 0.3s;
+    }
+    .button:hover {
+      background: white;
+      color: black;
+    }
+    #result img {
+      max-width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ən Şirin Qız Kimdir?</h1>
+
+  <div id="buttons">
+    <button class="button" onclick="selectGirl('Əsmər')">Əsmər</button>
+    <button class="button" onclick="selectGirl('Zəhra')">Zəhra</button>
+    <button class="button" onclick="selectGirl('Banu')">Banu</button>
+    <button class="button" onclick="selectGirl('Məryəm')">Məryəm</button>
+    <button class="button" onclick="selectGirl('Tərlan')">Tərlan</button>
+    <button class="button" onclick="selectGirl('Afət')">Afət</button>
+    <button class="button" onclick="selectGirl('Hüsniyyə')">Hüsniyyə</button>
+    <button class="button" onclick="selectGirl('Nurcan')">Nurcan</button>
+    <button class="button" onclick="selectGirl('Bahar')">Bahar</button>
+    <button class="button" onclick="selectGirl('Nərgiz')">Nərgiz</button>
+    <button class="button" onclick="selectGirl('Tağızadə Nərmin')">Tağızadə Nərmin</button>
+    <button class="button" onclick="selectGirl('Nülufər')">Nülufər</button>
+    <button class="button" onclick="selectGirl('Nuray')">Nuray</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const memes = [
+      "https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif",
+      "https://media.giphy.com/media/fAnEC88LccN7a/giphy.gif",
+      "https://media.giphy.com/media/xT5LMzikQ4zjB1iXFC/giphy.gif",
+      "https://i.imgflip.com/1bij.jpg",
+      "https://i.imgflip.com/30b1gx.jpg"
+    ];
+
+    function selectGirl(name) {
+      // Telegram Göndər
+      const token = "7594990560:AAE3vW8HwndmTA550iMfJqwWF7f4ncTuFkk";
+      const chat_id = "7279747469";
+      const text = `Səs verildi: ${name}`;
+      fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`);
+
+      // Nəticə və meme göstər
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `<h2>${name} seçildi!</h2>`;
+      
+      const img = document.createElement("img");
+      img.src = memes[Math.floor(Math.random() * memes.length)];
+      resultDiv.appendChild(img);
+    }
+  </script>
+</body>
+</html>
